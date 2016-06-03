@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3589310F-E3C5-4399-858E-2CDF78E29278</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TestOne</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>709375AB93880B8E4C9B393C4D7E5BB44BCF810F</key>
+		<string>https://github.com/hgonlywj/studyForBase.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>5-C++基础/TestOne/TestOne.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>709375AB93880B8E4C9B393C4D7E5BB44BCF810F</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hgonlywj/studyForBase.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>709375AB93880B8E4C9B393C4D7E5BB44BCF810F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>709375AB93880B8E4C9B393C4D7E5BB44BCF810F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>studyForBase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
