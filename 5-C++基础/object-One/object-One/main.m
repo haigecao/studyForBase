@@ -7,15 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "People.h"
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        int a = 0;
-        int b = 1;
-        int c = a + b;
-
+    @autoreleasepool {      //自动释放池
+        // 实例化对象
+        People *p = [[People alloc] init];
         
-        NSLog(@"%d", c);
+        
     }
     return 0;
 }

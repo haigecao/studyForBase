@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>6F622F75-A08D-4D5C-81AC-F7532715F1A3</string>
+	<string>BFAEF0D1-397A-42BB-8893-7C722105EAE4</string>
 	<key>IDESourceControlProjectName</key>
 	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,7 +14,7 @@
 		<string>https://github.com/hgonlywj/studyForBase.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>5-C++基础/object-One/object-One.xcodeproj/project.xcworkspace</string>
+	<string>5-C++基础/work_one/work_one.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>709375AB93880B8E4C9B393C4D7E5BB44BCF810F</key>

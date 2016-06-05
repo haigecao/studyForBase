@@ -48,7 +48,7 @@
 
 
     类的实现
-      #import "Person.h"
+      #import "Person.h"  // 倒入头文件去重
       @implementation Person
 
       @end
@@ -89,7 +89,98 @@
 
 
     变量的类型：
-      int : 32位，
-      float ： 1.0
-      double ：双精度
-      char ：
+      int : 32位，20多亿
+      float ： 1.0， 32位
+      double ：双精度， 64位
+      char ：一个字节，8位
+
+    限定词：
+      long a == long int a
+      long long a = long long int a
+      short a = short int a
+      unsigned a = unsigned int a
+      signed a = signed int a
+
+    指针类型
+
+    类
+
+    万能类型 id
+
+
+    goto:很好的中断方法
+
+      k:
+        i++;
+        if (i < 10) {
+            NSLog(@"%d,", i);
+            goto k;
+        }
+        NSLog(@"\n可以执行！");
+
+
+    函数：
+
+      函数的定义：
+      ［类型］ 函数名(参数) {
+          return [类型]
+      }
+
+
+
+
+    面向对象编程：OOP
+        
+        ＃ .h文件
+          #import <Foundation/Foundation.h>
+
+          @interface People : NSObject
+          @end
+
+
+          
+          int main(int argc, const char * argv[]) {
+              @autoreleasepool {
+                  // 实例化对象
+                  /*
+                    [类名 方法名]
+                    [对象名 方法名]
+                    alloc 为对象分配内存空间
+                    init 初始化操作
+                   */
+                  People *p = [[People alloc] init];
+              
+              }
+              return 0;
+          }
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
