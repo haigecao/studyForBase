@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example2</title>
+</head>
+<body>
+        
+    <style>
+        .canvas {
+            border: 1px solid #000;
+            margin: 0 auto;
+            display: block;
+        }
+
+    </style>
+
+    <canvas id="canvas" class="canvas"></canvas>
+
+    <script>
+
+        var canvas = document.getElementById('canvas');
+        canvas.width = 800;
+        canvas.height = 500;
+        var context = canvas.getContext('2d');
+
+        context.lineWith = 5;
+        context.strokeStyle = "#369";
+        // 以(300, 300)为圆心，100为半径，画弧
+        // 从 0 --> 270度。
+        // true / false  顺势和逆势
+        context.arc(300, 300, 100, 0, 0.5*Math.PI, true);
+
+        context.stroke();
+
+    </script>
+    
+</body>
+</html>

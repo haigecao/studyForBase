@@ -6,7 +6,12 @@
   掌握一门后台语言，熟悉c++或java的基础语法
   了解面向对象思想
   了解虚拟函数、反射的基本原理；
-  
+
+
+### 
+    编译C++
+    g++ -std=c++11 test.cpp -o test
+
 
 ### Cpu、内存
   a —— 了解cpu和程序执行的关系；
@@ -276,14 +281,32 @@
         use mysql;
 
         select host, user form user;
+          +-----------+-----------+
+          | host      | user      |
+          +-----------+-----------+
+          | localhost | mysql.sys |
+          | localhost | root      |
+          +-----------+-----------+
 
 
-        +-----------+-----------+
-        | host      | user      |
-        +-----------+-----------+
-        | localhost | mysql.sys |
-        | localhost | root      |
-        +-----------+-----------+
+        mysql> select user from mysql.user;
+            +-----------+
+            | user      |
+            +-----------+
+            | osye      |
+            | mysql.sys |
+            | root      |
+            +-----------+
+            3 rows in set (0.00 sec)
+      
+
+
+        
+        # 创建一个用户
+        create user 'hg';
+
+        # 创建一个带密码的用户
+
               
 
   

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>backbone 路由和历史管理</title>
+</head>
+<body>
+
+
+
+    
+</body>
+<script type="text/javascript" src="./lib/jquery.js"></script> 
+<script type="text/javascript" src="./lib/underscore.js"></script>
+<script type="text/javascript" src="./lib/backbone.js"></script>
+
+<script>
+
+    var Workspace = Backbone.Router.extend({
+
+      routes: {
+        "help":                 "help",    // #help
+        "search/:query":        "search",  // #search/kiwis
+        
+        // p:page 理解为正则吧，可以省略第一个参数，直接窜入第二个
+        
+        "search/:query/p:page": "search"   // #search/kiwis/p7
+      },
+
+      help: function() {
+        console.log('help');
+      },
+
+      search: function(query, page) {
+        console.log('query', query, "page", page);
+      }
+
+    });
+
+    var W = new Workspace;
+    Backbone.history.start();   // 开启历史管理
+
+
+
+
+
+
+
+
+</script>
+</html>

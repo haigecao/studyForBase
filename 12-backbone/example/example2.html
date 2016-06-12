@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>backbone example</title>
+</head>
+<body>
+
+
+
+    
+</body>
+    <script type="text/javascript" src="./lib/jquery.js"></script> 
+    <script type="text/javascript" src="./lib/underscore.js"></script>
+    <script type="text/javascript" src="./lib/backbone.js"></script>
+
+    <script>
+
+//------------------------------------------------------------------- //
+/*
+    添加事件
+*/
+        // var M1 = Backbone.Model.extend({
+        //     defaults: {
+        //         name : "hgwj",
+        //         sayHello : function () {
+        //             console.log("HGonlyWJ");
+        //         }
+        //     },
+
+        //     initialize : function  () {     // 初始化构造函数
+        //         console.log('initialize...');
+
+        //         // change 只要内容或者属性发生改变的时候，
+        //         // 也可以使用 trigger 触发。
+        //         // 就会触发这个事件。
+
+        //         this.on('change', function (arg) {  
+        //             alert('123');
+        //             console.log("arg" , arg);
+        //         })
+
+        //         // name 被改变的时候，才会触发。
+        //         this.on('change:name', function () {
+        //             console.log('name....');
+        //         })
+        //     }
+        // });
+
+        // var m1 = new M1;
+        // // alert(m1.get('name'));
+        // // m1.trigger('change');       // 触发事件
+    
+        // m1.set('name', 'hg');
+
+
+// ----------------------------------------------------------------------- //
+
+/*
+    事件监听，
+    但set发生的时候，触发change-->执行show方法
+ */
+
+        var M = Backbone.Model.extend({
+            defaults : {
+                name : 'hello'
+            }
+        });
+        
+        var V = Backbone.View.extend({
+
+            initialize : function(){
+                
+                this.listenTo( this.model , 'change' , this.show );
+                
+            },
+            
+            show : function(model){
+                $('body').append( '<div>'+ model.get('name') +'</div>' );
+            }
+            
+        });
+        
+        
+        var m = new M;
+        var v = new V({model:m});
+        v.show(m);
+        // m.set('name','hi');
+
+
+
+
+
+    </script>
+    
+
+</html>

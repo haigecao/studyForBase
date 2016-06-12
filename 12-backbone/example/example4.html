@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>backbone 路由和历史管理</title>
+</head>
+<body>
+
+
+    <input /> 
+
+    <ul><li>1</li></ul> 
+
+    
+</body>
+<script type="text/javascript" src="./lib/jquery.js"></script> 
+<script type="text/javascript" src="./lib/underscore.js"></script>
+<script type="text/javascript" src="./lib/backbone.js"></script>
+
+<script>
+
+
+
+
+    var V = Backbone.View.extend({  
+        el:$("body"), //委托元素  
+        events : {    //委托事件  
+            'click input' : 'aaa',  
+            'mouseover li': 'bbb',  
+        },
+        aaa : function(){alert('a');},  
+        bbb : function(){alert('b');}  
+    });  
+
+    // var v =  V;
+    // 
+    var arr = [1, 3, 5, 7, 9];
+    arr.reduce(function (x, y) {
+        return x + y;
+    }); // 25
+
+
+
+</script>
+</html>

@@ -136,7 +136,7 @@
     
     操作：sql语句
 
-    游戏规则:
+    规则:
 
             select <目标列名序列>
 
@@ -153,7 +153,11 @@
     
                             
 
+## 编译
 
+    gcc -g -o test_mysql test_mysql.c $(mysql_config --cflags) $(mysql_config --libs)
+
+    g++ -std=c++11 test_mysql.c -o test_mysql $(mysql_config --cflags) $(mysql_config --libs)
 
 
 

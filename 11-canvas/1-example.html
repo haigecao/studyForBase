@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas example1</title>
+</head>
+<body>
+    
+    <style>
+        .test {
+            border:1px solid #000;
+            margin: 0 auto;
+            display: block;
+        }
+
+    </style>
+    
+    <canvas id='canvas' class='test'>
+        
+    </canvas>   
+
+    <script>
+
+        // canvas 是以基于状态的绘图
+
+
+        var canvas = document.getElementById('canvas');
+        canvas.width=800;
+        canvas.height=400;
+        var context = canvas.getContext("2d");
+        // 使用context 绘制
+        
+        context.beginPath();
+
+        // 画一条直线
+        context.lineWith = 3;
+        context.strokeStyle="red";
+
+        context.moveTo(100, 100);       // 移动焦点，起点
+        context.lineTo(200, 200);       // 终点 1
+        context.lineTo(100, 200);       // 终点 2
+        context.lineTo(100, 100);       // 终点 3
+        context.fillStyle="#666";       // 填充色                       
+        context.fill();                 // fill 需要找那些首尾相连的路径进行填充，
+        context.stroke();               // 绘制
+
+        context.closePath();
+
+        context.beginPath();
+
+        context.moveTo(400, 100);       // 移动焦点，起点
+        context.lineTo(500, 200);       // 终点4
+        context.strokeStyle="blue";     // 覆盖了 红色的画笔
+        context.stroke();               // 绘制
+        context.closePath();
+
+        //  分割开，格式和属性
+        //  context.beginPath
+        //  context.closePath
+        //  closePath 会封闭，当前路径。不想封闭，就不要用closePath
+
+
+
+
+    </script>
+    
+</body>
+</html>

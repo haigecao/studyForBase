@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas example3</title>
+</head>
+<body>
+    
+    <style>
+        .test {
+            border:1px solid #000;
+            margin: 0 auto;
+            display: block;
+        }
+
+    </style>
+    
+    <canvas id='canvas' class='test'>
+        
+    </canvas>   
+
+    <script src="./digit.js"></script>
+    <script>
+
+        window.onload = function () {
+
+            var canvas = document.getElementById('canvas');
+            canvas.width=800;
+            canvas.height=400;
+            var context = canvas.getContext("2d");
+
+
+            render (context);   // 绘图
+        }
+
+        function render(cxt) {
+
+            var hour = 12;
+            var min = 20;
+            var sec = 59;
+
+            renderDigit(0, 0, parseInt(hour/10), cxt);
+        }
+
+
+        function renderDigit(x, y, num, cxt) {
+
+            for (var i = 0; i < digit[num].length; i++) {
+                for (var j = 0; j < digit[num][i].length; j++) {
+                    if (digit[num][i][j] == 1) {
+                        
+                        cxt.beginPath();
+
+                        cxt.arc(x + j *2*(10+1) +(10 + 1), y + i *2*(10+1) + (10 + 1), 10, 0, 2*Math.PI, true);
+
+                        cxt.closePath();
+                        
+                        cxt.fillStyle="#369";
+                        cxt.fill();   // fill 需要找那些首尾相连的路径进行填充，
+
+                    }
+
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
