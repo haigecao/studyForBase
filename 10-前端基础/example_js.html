@@ -6,6 +6,17 @@
 </head>
 <body>
     
+    <style>
+
+        #div {
+            color: red;
+            border:1px solid #ddd;
+            background:blue;
+        }
+  
+
+    </style>
+
     <div id="div">
         click
     </div>
@@ -18,11 +29,34 @@
       <li id="bar1">bar</li>
       <li id="baz2">baz</li>
     </ul>
+    
+    <p id="results"><b>Results: </b> </p>
+    <form>
+      <select name="single">
+        <option>Single</option>
+        <option>Single2</option>
+      </select>
+      <select name="multiple" multiple="multiple">
+        <option selected="selected">Multiple</option>
+        <option>Multiple2</option>
+        <option selected="selected">Multiple3</option>
+      </select><br/>
+      <input type="checkbox" name="check" value="check1"/> check1
+      <input type="checkbox" name="check" value="check2" checked="checked"/> check2
+      <input type="radio" name="radio" value="radio1" checked="checked"/> radio1
+      <input type="radio" name="radio" value="radio2"/> radio2
+    </form>
+    
 
 <script src="http://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.js"></script>
     
 <script>
-    
+
+
+    // $("#results").append( "<tt>" + $("form").serialize() + "</tt>" );
+
+
+
     // $('#div').on('click.aaa', function () {
     //     alert('aaa.click');
     // });
@@ -40,12 +74,24 @@
     // } 
 
 
+  //   var str = "-webkit-background-color";
+
+  //   String.prototype.transform = function(){
+  //       return this.replace(/-(\w)/g, function(){
+  //           var arg = arguments;
+  //           return arg[1].toUpperCase(); 
+  //       }) 
+  //   } 
+
 
 
 
     
 
 
+  // var dom = document.getElementById("div"),
+  // style = window.getComputedStyle(dom , null);
+  // console.log(style['color']);
 
 
 
