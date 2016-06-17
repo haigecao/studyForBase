@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test html</title>
+</head>
+<body>
+
+
+    <h2><a href="#brand">Brand</a></h2>
+    <div class="menuSection" id="brand">
+        content for Brand
+    </div>
+    
+    
+
+    <h2><a href="#brand">Brand</a></h2>
+    <div class="menuSection" id="brand">
+      content for Brand
+    </div>
+    <h2><a href="#jake">Brand</a></h2>
+    <div class="menuSection" id="jake">
+     content for jake
+    </div>
+    <h2><a href="#aron">Brand</a></h2>
+    <div class="menuSection" id="aron">
+        content for aron
+    </div>
+
+    <div id="wrapper">
+        <span>test</span>
+    </div>
+    
+    <div class="test">
+        <a href="#" class="hg">1111</a>
+    </div>
+    
+    <div class="test1">
+        <span class="tests">
+            
+        </span>
+    </div>
+
+    <style>
+        
+        .test1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            -webkit-transition:background-color 2s, width 1s, height 3s;
+        }
+
+        .test1:hover {
+            background-color: blue;
+            width: 300px;
+            height: 400px;
+        }
+
+
+
+        .test {
+            height: 100px;
+            width: 100px;
+        }
+        .hg {
+            background: blue;
+        }
+        .hg:visited {
+            /*background-image: url();*/
+            background: red;
+        }
+
+        .menuSection{
+          display: none;
+        }
+        :target{        /*这里的:target就是指id="brand"的div对象*/
+          display:block;
+        }
+
+        #brand:target {
+          background: orange;
+          color: #fff;
+        }
+        #jake:target {
+          background: blue;
+          color: #fff;
+        }
+        #aron:target {
+          background: red;
+          color: #fff;
+        }
+
+        #wrapper {
+
+        }
+        
+    </style>
+    
+</body>
+</html>

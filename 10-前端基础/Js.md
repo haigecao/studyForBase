@@ -325,11 +325,30 @@
         
 
 
+        再触发ajax之前，会有ajaxStart事件
 
 
+            $(document).on('ajaxStart', function () {
+                alert(0);
+            });
+            
+        $ajax({
+            
+            global:false;   // 关闭
+            processData :  true     // 数据串联化处理, false 关闭        
+            async           // 异步
+            timeout :       // 超时, 超时提示。
+            data : 
+            dataType ： 
+            username:       xhr.open(options.type, url, async, username, password); 
+            password:       服务器身份验证，非必需。
+            cache:          缓存
+            throws;
+            traditional;
+            headers;
 
 
-
+        })            
 
 
 

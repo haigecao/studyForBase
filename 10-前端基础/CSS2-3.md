@@ -183,11 +183,11 @@
 
 ## 4)选择器
     
-    E，F     多元素选择器
-    E F     后代选择器，（F是E的后代，只要存在就行）
-    E>F     子选择器    (必须是儿子节点)
-    E＋F     毗邻选择器  (同一级 挨着 下一个元素 才有效果)
-    E～F     同级选择器  (匹配在E元素之后的同级选择器,所以的，可以中间间断)
+    E, F       多元素选择器
+    E F        后代选择器，（F是E的后代，只要存在就行）
+    E > F      子选择器    (必须是儿子节点)
+    E ＋ F     毗邻选择器  (同一级 挨着 下一个元素 才有效果)
+    E ～ F     同级选择器  (匹配在E元素之后的同级选择器,所以的，可以中间间断)
 
 
 
@@ -200,10 +200,11 @@
     如：a:link|a:visited|a:hover|a:active.
 
     而伪元素选择器并不是针对真正元素使用的元素选择器。css中有四种伪类选择
-    (first-line:第一行, 
-    first-letter：第一个字母,
-    before：之前加入，
-    after：
+    (   
+        first-line:第一行, 
+        first-letter：第一个字母,
+        before：之前加入，
+        after：
     ）
     css3中引入的机构性伪劣选择器的共同特征是允许开发者根据文档树中的结构
     来指定元素样式。
@@ -222,6 +223,352 @@
 
         厂商前缀，
             －ms －webkit －o －moz 
+
+
+
+### 5)
+    
+    A —— 颜色相关的CSS
+
+         a) 渐变
+
+            background-image:line-gradient(to top left, yellow, blue, red);
+            to top left 右下到左上
+            to buttom 上－》下
+            。。。
+
+
+    
+    B —— 文字与字体
+
+        b1)
+            text-overflow 与 word-wrap 
+
+                text-overflow用来设置是否使用一个省略标记（...）标示对象内文本的溢出。
+
+                    {                    
+                        text-overflow:ellipsis; 
+                        overflow:hidden; 
+                        white-space:nowrap; 
+                    }
+    
+
+                white-space:nowrap | break-word
+                        normal为浏览器默认值，
+                        break-word设置在长单词或 URL地址内部进行换行，
+                        此属性不常用，用浏览器默认值即可。
+
+
+        b2)
+            text-shadow —— 置文本的阴影效果
+
+                text-shadow: X-Offset Y-Offset blur color;
+
+                    X-Offset：表示阴影的水平偏移距离，其值为正值时阴影向右偏移，反之向左偏移；      
+                    Y-Offset：是指阴影的垂直偏移距离，如果其值是正值时，阴影向下偏移，反之向上偏移；
+                    Blur：是指阴影的模糊程度，其值不能是负值，如果值越大，阴影越模糊，
+                            反之阴影越清晰，如果不需要阴影模糊可以将Blur值设置为0；
+                    Color：是指阴影的颜色，其可以使用rgba色。
+
+
+            类比：box-shadow —— 边框的阴影
+
+
+                值               描述      测试
+                h-shadow        必需。     水平阴影的位置。允许负值
+                v-shadow        必需。     垂直阴影的位置。允许负值
+                blur            可选。     模糊距离
+                spread          可选。     阴影的尺寸
+                color           可选。     阴影的颜色。请参阅 CSS 颜色值
+                inset           可选。     将外部阴影 (outset) 改为内部阴影
+
+                div {
+                    box-shadow: 10px 10px 5px #888888;
+                }
+            
+
+
+    C —— 背景相关
+        
+
+
+        c1) 
+            background-origin 设置元素背景图片的原始起始位置。
+
+
+                background-origin ： border-box | padding-box | content-box;
+                    参数分别表示背景图片是从边框，还是内边距（默认值），或者是内容区域开始显示。
+
+        c2)
+            background-clip 用来将背景图片做适当的裁剪以适应实际需要。
+            
+                background-clip ： border-box | padding-box | content-box | no-clip
+
+                    参数分别表示从边框、或内填充，或者内容区域向外裁剪背景。no-clip表示不裁切，
+                和参数border-box显示同样的效果。backgroud-clip默认值为border-box。
+
+
+
+        c3)
+            background-size 设置背景图片的大小
+
+               以长度值或百分比显示，还可以通过cover和contain来对图片进行伸缩。
+            
+                1、auto：默认值，不改变背景图片的原始高度和宽度；
+                2、<长度值>：成对出现如200px 50px，将背景图片宽高依次设置为前面两个值，当设置一个值时，将其作为图片宽度值来等比缩放；
+                3、<百分比>：0％~100％之间的任何值，将背景图片宽高依次设置为所在元素宽高乘以前面百分比得出的数值，当设置一个值时同上；
+                4、cover：顾名思义为覆盖，即将背景图片等比缩放以填满整个容器；
+                5、contain：容纳，即将背景图片等比缩放至某一边紧贴容器边缘为止。
+
+
+
+
+        
+    D —— CSS 选择
+            
+                <a href="##" class="columnNews">我的背景想变成红色</a>
+                <a href="##" class="columnVideo">我的背景想变成红色</a>
+                <a href="##" class="columnAboutUs">我的背景想变成红色</a><br/>
+                
+            1)
+                    a[class^=column] {
+                        color:red;
+                    }
+
+                    a[href$=doc] {
+                        color:green;
+                    }
+                    
+                    a[title*=box] {
+                        color:blue;
+                    }
+                
+                ^       开头
+                $       结尾
+                *       在任意位置包含
+        
+
+            2)
+                结构性伪类选择器—root          
+                    root 其实等价于 HTML 
+                                        :root {
+                                            color : blue;
+                                        }
+                
+
+            3) 
+                结构性伪类 not 
+
+            4)
+                :empty选择器表示的就是空。用来选择没有任何内容的元素，
+                这里没有内容指的是一点内容都没有，哪怕是一个空格
+
+                    p:empty {
+                      display: none;
+                    }​
+
+            5)
+                :target选择器称为目标选择器，
+                用来匹配文档(页面)的url的某个标志符的目标元素。
+                我们先来上个例子，然后再做分析。
+                    
+                    #brand:target {
+                      background: orange;
+                      color: #fff;
+                    }
+                
+            6）
+                first-child
+                last-child
+
+                    ul > li : first-child {
+
+                    }
+
+                :nth-child(n) 
+            
+
+            7）
+                ::selection   （::-moz-selection 火狐）
+                “::selection”伪元素是用来匹配突出显示的文本(用鼠标选择文本时的文本）。
+
+            8）
+
+                readonly       只读
+
+                    textarea:read-only {
+                        ...
+                    }    
+
+
+            9）
+                -moz-read-write
+                read-write
+
+
+            10)
+
+                before after + content
+
+        
+    E —— 变形和动画
+            
+        1) rotate 旋转，不改变形状。
+                正值顺序，负值逆序。
+
+              -webkit-transform: rotate(-20deg);
+              -moz-transform: rotate(-20deg);
+              transform:rotate(-20deg);
+        
+            如果标签是 span，记得写成block。
+
+
+        2）skew 扭曲，改变形状，不旋转。
+
+            
+            skew(x, y);    水平方向和垂直方向。
+
+
+        3）scale 缩放
+
+            scale(x,y)  水平，垂直缩放。
+            scale()的取值默认的值为1，当值设置为0.01到0.99之间的任何值，作用使一个元素缩小；
+            而任何大于或等于1.01的值，作用是让元素放大。
+                
+            scale(0.1, 0.2)
+
+        4）translate 移动
+                
+            居中
+              left:50%;
+              top:50%;
+              -webkit-transform:translate(-50%, -50%);
+              -moz-transform:translate(-50%, -50%);
+              transform:translate(-50%, -50%);
+
+
+        5) transform-origin
+                
+            任何一个元素都有一个中心点，默认情况之下，
+            其中心点是居于元素X轴和Y轴的50%处。
+
+
+
+
+        动画
+
+        1) transition
+            
+            从一个属性值平滑过渡到另一个属性值。
+            
+            transition: <过度属性的名称> <过度时间> <过度模式>, ...;
+                
+                    连续写就可以，逗号隔开。
+
+                -webkit-transition
+                -moz-transition
+                -o-transition
+
+                    
+                    transition-timing-function
+                    过度模式，
+                        ease, 缓慢开始，缓慢的结束。
+                        linear,匀速。
+                        ease-in,缓慢的开始
+                        ease-out,缓慢的结束
+                        ease-in-out，缓慢的开始，缓慢的结束。
+
+            例子：
+                #div {
+                    width : 200px;
+                    color:blue;
+                    transition: color 2s ease, width 1s ease-in;
+                }
+
+                #div:hover {
+                    color:red;
+                    width:100px;
+                }
+
+
+        2）animation
+
+            通过关键帧的技术，在网页上产生更加复杂的效果。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
