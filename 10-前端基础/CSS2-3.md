@@ -491,20 +491,41 @@
                 }
 
 
+        
+
+
         2）animation
 
             通过关键帧的技术，在网页上产生更加复杂的效果。
 
+            @keyframes test {
+                0% {
+                    color : red;
+                }
+
+                100% {
+                    color: blue;
+                }
+            }
+
+            animation-name:test;
+            animation
+
+                  animation-name: changeColor;
+                  animation-duration: 5s;
+                  animation-timing-function: ease-out;
+                  animation-delay: .1s;
 
 
+        
+        步局
 
+            columns 多列布局
 
+                <columns-width> <columns-count>
 
-
-
-
-
-
+                主要用来定义多列中每列的宽度
+                主要用来定义多列中的列数
 
 
 
