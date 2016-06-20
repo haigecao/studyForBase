@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title></title>
+  <script type="text/jsx">
+  var Dom = React.createClass({
+    render: function() {
+      var tags =[];
+      for(var i = 0; i< 10000; i++) {
+        tags.push(<li>{this.props.number}</li>);
+      }
+      return (<ul>{tags}</ul>);
+    }
+  });
+  var dom = React.render(<Dom number={1}></Dom>, document.getElementById('container'));
+  document.querySelector('button').addEventListener('click', function(){
+    dom.setProps({
+      number: 2
+    });
+  });
+  </script>
+  <script type="text/javascript" src="http://cdn.staticfile.org/react/0.12.0-rc1/JSXTransformer.js"></script>
+  <script type="text/javascript" src="http://cdn.staticfile.org/react/0.12.0-rc1/react.js"></script>
+</head>
+<body>
+<button>go</button>
+<div id="container"></div>
+</body>
+</html>

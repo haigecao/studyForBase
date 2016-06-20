@@ -213,12 +213,9 @@
 
 
 ### jQuery.offset
-
-
         
             window.innerHeight  // 屏幕显示区域的高度
             window.innerWidth   // 屏幕显示区域的宽度
-
 
             jQuery.
                     width()                 // L
@@ -231,10 +228,6 @@
                     setPositiveNumber
                     getWidthOrHeight
                     augmentWidthOrHeight
-
-
-
-
 
 
 ### ajax
@@ -347,11 +340,236 @@
             traditional;
             headers;
 
-
         })            
 
 
 
+### 闭包
+    
+    闭包是指一个函数或者函数的引用，与一个引用环境绑定在一起，
+这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。
+
+    闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，
+仍可以访问非本地变量。
+
+
+
+### 作用域
+    
+    全局
+    函数（独立作用域）
+    eval（作用域）
+
+    (funciton () {
+
+    })()
+
+    !function () {
+
+    }()
+
+    +function () {
+
+    }()
+
+    是将函数变为表达式，而不是函数声明。
+
+
+### 执行上下文
+    
+    执行上下文（Execution Context, 缩写EC）
+
+        是堆栈，层层压入。
+
+        变量对象(variable Object 缩写为VO)是一个抽象的“对象”，
+    他拥有存储执行上下文中的：变量，函数声明，函数参数。
+
+
+    全局上下文初始化：
+
+        VO(globalContext) === [[global]];
+
+        [[global]] = {
+            Math:
+            String:
+            isNaN: function() {[native Code]}
+            ...
+            ...
+            window:golbal //applied by browser(host)
+        };
+
+        GlobalContextVO     (VO === this === global)
+
+        
+        String(10);         [[global]].String(10);
+        window.a=10;        [[global]].window.a=10
+        this.b=20;          [[global]].b=20
+
+
+    函数中，还有一个激活对象，叫AO
+    
+        VO(functionContext) === AO
+
+        AO = {
+            arguments;<Arg0>
+        };
+
+        arguments = {
+            callee,
+            length,
+            properties-indexes
+        };
+
+    
+        例子：
+
+            function test(a, b) {
+                var c = 10;
+                function d() {
+
+                };
+
+                var e = function _e() {
+                };
+
+                (function x() {});
+                b=20;
+            }
+
+            test(10);
+
+            （1）首先是全局上下文，
+            （2）就是函数上下文初始化。
+            
+            —— 变量初始化：
+                AO(test) = {
+                    a:10,
+                    b:undefined,
+                    c:undefined,
+                    d:<ref to func "d">,
+                    e:undefined
+                }
+
+            —— VO 执行顺序，并初始化。
+                1） 函数参数（传入，就放入对应的值，若未传入，初始化参数为undefined）
+                2） 函数声明（若发生命名冲突，覆盖）
+                3） 变量声明（初始化为undefined， 若发生命名冲突，会省略）
+
+
+            声明和未声明是有很大区别的，声明未赋值使用，是undefiend。
+            未声明使用，是对报错的。Uncaught ReferenceError
+                
+                (function aa(x, y) {
+                  console.log(x);
+                  var x = 10;
+                  function x() {
+
+                  }
+                  console.log(x);
+                })(1,2)
+                
+
+                --> 执行结果：
+                    function x() {
+
+                    }
+                    10
+                
+                var x=10; 是会被前置处理，执行的时候才会赋值。
+                function x 会覆盖 变量x，
+                但是，var x =10; 是被后执行的，此时的x＝10；
+
+            
+            —— 执行阶段：
+                赋值，
+                函数执行，
+                函数表达式，
+                函数自执行。
+
+
+### 面向对象OOP
+
+        ES5 
+            object.getPrototypeOf() 获取__proto__指向的Prototype对象。
+    
+
+        原型链：层层 嵌套 查找。
+
+
+            有一些要注意的点，
+
+        1）被重写的prototype原型，会发生什么？
+
+                function A() {
+
+                }
+                A.prototype.x = 10;
+
+                var a = new A();
+                A.prototype = {y:1};
+                console.log(a.x);   //10 还是可以打印出来
+                
+                var b = new A();
+                console.log(b.x);   // undefined
+                console.log(b.y);   // 1
+                
+
+                被重新赋值的prototype，对之前已经定义的没有影响，但是之后创建的，有影响。
+
+
+        2）
+            instanceof
+
+                右边是函数，左边是对象。
+            
+            ［1,2］instanceof Array  === true
+
+             
+
+        3）
+            实现继承的方式；
+
+            function A() {
+
+            }
+
+            function B() {
+
+            }
+
+        //--------------------------------------------------
+            if (!Object.create) {
+                Object.create = function(proto) {
+                    function F() {}
+                    F.prototype = proto;
+                    return new F;
+                };
+            }
+
+            B.prototype = Object.create(A.prototype);
+        //--------------------------------------------------
+
+        4) 
+            模拟重载
+
+                无法用参数的重载，来解决。
+                但是犹豫是弱类型的，可以通过判断参数的个数和类型，进行重载。
+
+
+
+            function A(n) {
+                this.n = n;
+            }
+
+            function B(n, b) {
+                this.b = b;
+                A.call(this, n);
+            }
+
+        5）
+            模块化
+
+            sea,require,commonjs
 
 
 
@@ -371,14 +589,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
+        
 
 

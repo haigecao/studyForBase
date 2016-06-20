@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react one test</title>
+</head>
+<body>
+    <script src="build/react.js"></script>
+    <script src='build/JSXTransformer.js'></script>
+
+    <div id="app"></div>
+    <div id="app1"></div>
+
+
+    <script type="text/jsx">
+
+        var MessageBox = React.createClass({
+            alertMe : function () {
+                alert(1);
+            },
+            render : function () {
+                return (<h1 onClick={this.alertMe} >hello world!</h1>)
+            }
+        });
+
+        React.render(<MessageBox />, 
+            document.getElementById('app'),
+            function () {
+                console.log('complete callback function');
+            }
+        );
+
+
+        var TestMessageBox = (<div> 
+                <br/><hr/><br/><div> hello world 2 </div>
+            </div>)
+        React.render(
+            TestMessageBox,
+            document.getElementById('app1')
+        );
+
+
+    </script>
+    
+</body>
+</html>

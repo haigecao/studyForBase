@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="jQuery Tweet Box">
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+	<div class="well clearfix">
+    <textarea class="form-control"></textarea><br>
+    <span>140</span>
+    <button class="js-tweet-button btn btn-primary pull-right" disabled>Tweet</button>
+    <button class="js-add-photo-button btn btn-default pull-right">Add Photo</button>
+  </div>
+</body>
+<script type="text/javascript">
+	$("textarea").on("input", function() {
+	  if ($(".js-add-photo-button").hasClass("is-on")) {
+	    $("span").text(140 - 23 - $(this).val().length);
+	  } else {
+	    $("span").text(140 - $(this).val().length);
+	  }
+
+	  if ($(this).val().length > 0 || $(".js-add-photo-button").hasClass("is-on")) {
+	    $(".js-tweet-button").prop("disabled", false);
+	  } else {
+	    $(".js-tweet-button").prop("disabled", true);
+	  }
+	});
+
+	$(".js-add-photo-button").on("click", function() {
+	  if ($(this).hasClass("is-on")) {
+	    $(this)
+	      .removeClass("is-on")
+	      .text("Add Photo");
+	    $("span").text(140 - $("textarea").val().length);
+	    if ($("textarea").val().length === 0) {
+	      $(".js-tweet-button").prop("disabled", true);
+	    }
+	  } else {
+	    $(this)
+	      .addClass("is-on")
+	      .text("✓ Photo Added");
+	    $("span").text(140 - 23 - $("textarea").val().length);
+	    $(".js-tweet-button").prop("disabled", false);
+	  }
+	});
+
+
+
+</script>
+</html>

@@ -1,0 +1,27 @@
+<html ng-app="Test">
+<head>
+  <title></title>
+  <script type="text/javascript" src="http://cdn.staticfile.org/angular.js/1.3.0-beta.13/angular.min.js"></script>
+  <script type="text/javascript">
+  angular.module('Test', [])
+  .controller('Test', function($scope) {
+    var numbers = [];
+    for(var i =0; i<10000; i++) {
+      numbers.push(1);
+    };
+    $scope.numbers = numbers;
+    $scope.go = function(){
+      $scope.numbers = $scope.numbers.map(function(){
+        return 2;
+      });
+    }
+  });
+  </script>
+</head>
+<body ng-controller="Test">
+<button ng-click="go()">go</button>
+<ul>
+  <li ng-repeat="num in numbers track by $index">{{num}}</li>
+</ul>
+</body>
+</html>

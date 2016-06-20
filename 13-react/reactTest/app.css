@@ -1,0 +1,20 @@
+#hg {
+	background-color: #ccc;
+}
+
+.commonBox {
+	color: red;
+	font-size: 20px;
+}
+.common-list {
+	color: blue;
+	font-size: 14px;
+}
+.common-form {
+	background-color: #369;
+}
+
+.navigation {
+	color: red;
+	font-size: 20px;
+}
