@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+</head>
+<body>
+    <script src="build/react.js"></script>
+    <script src='build/JSXTransformer.js'></script>
+
+    <div id="app"></div>
+    <div id="app1"></div>
+    
+    <style>
+        p { font-size: 20px; }
+        .hg { cursor: pointer; }
+        .wj1 { color: red; }
+        .wj2 { color: blue; }
+    </style>
+
+    <script type="text/jsx">
+
+        var MessageBox = React.createClass({
+            getInitialState:function () {
+                return ({
+                   text : "change react text",
+                   selectValue : "a"
+                });
+            },
+
+            handleClick : function (e) {
+                // this.setState({count:++this.state.count});
+                console.log("event object", e);
+                console.log("e.target", e.target);
+                console.log("本地的原生事件", e.nativeEvent);
+
+            },
+
+            getDefaultProps : function () {
+                return {
+                    title : "Fuck IE",
+                    message : "FUCK IE"
+                }
+            },
+
+            handleSubmit : function(e) {
+                // alert();
+                e.preventDefault();
+
+                console.log(this.refs['text']);
+            },
+
+            handleChange : function (e) {
+                this.setState({text : e.target.value});
+            },
+
+            handleChangeSelect : function () {
+                this.setState({selectValue: e.target.value});
+            },
+
+            render: function() {
+
+                return (
+                    <div>
+                         <form onSubmit={this.handleSubmit}> 
+
+                            <input ref='text' type='text' defaultValue="fuck ie" />
+                            <input type='text' value={this.state.text} onChange={this.handleChange} />
+
+                            <br/>
+                            <select onChange={this.handleChangeSelect} value='b'>
+                                <option value='a'>A</option>
+                                <option value='b'>B</option>
+                                <option value='c'>C</option>
+                            </select>
+
+                            <br/>
+                            <p>radio button</p>
+                            <lable for="hg1" >A</lable>
+                            <input id='hg1' type='radio'  name='inputRaido' value="a" /><br/>
+                            <lable for='hg2' >B</lable>
+                            <input id='hg2' type='radio' defaultChecked name='inputRaido' value="b" /><br/>
+                            <lable for='hg3' >C</lable>
+                            <input id='hg3' type='radio' name='inputRaido' value="c" />
+                            <hr />
+
+                            <input id='hg3' type='checkbox' name='inputCheckBox' value="m" />
+                            <input id='hg3' type='checkbox' name='inputCheckBox' value="n" />
+                            <input id='hg3' type='checkbox' defaultChecked name='inputCheckBox' value="p" />
+
+                            <input type='submit' onClick={this.handleSubmit}/>
+
+
+                         </form>
+
+                    </div>
+                );
+            }
+        });
+
+
+
+
+        React.render(
+            <MessageBox />,
+            document.getElementById('app')
+        );
+    </script>
+    
+</body>
+</html>

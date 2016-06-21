@@ -57,6 +57,37 @@
 
 
 
+### event 
+
+        {
+            handleClick : function (e) {
+                
+                console.log(e);     
+                    //  事件对象
+                
+
+                e.target            
+                    // <p class="hg" data-reactid=".0.2"> 点击我 </p>
+
+
+                e.nativeEvent   原生的。不是跨浏览器的。    
+                    // MouseEvent {isTrusted: true, screenX: 111, screenY: 243, clientX: 50, clientY: 125…}
+            }
+        }
+
+        <p className='hg' onClick={this.handleClick}> 点击我 </p>
+
+    
+        在标签中不使用 defaultValue。而是使用value＝{this.state.value},内容将无法修改。
+        因此，需要添加onchange事件，进行监听改变/
+
+
+
+### refs
+    
+        
+
+
 
 ### 复合组件
 
