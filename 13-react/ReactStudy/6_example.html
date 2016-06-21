@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props</title>
+</head>
+<body>
+    <script src="build/react.js"></script>
+    <script src='build/JSXTransformer.js'></script>
+
+    <div id="app"></div>
+    <div id="app1"></div>
+    
+    <style>
+        p { font-size: 20px; }
+        .hg { cursor: pointer; }
+        .wj1 { color: red; }
+        .wj2 { color: blue; }
+    </style>
+
+    <script type="text/jsx">
+
+        var MessageBox = React.createClass({
+            getInitialState:function () {
+                return ({
+                    count : 0,
+                    text : "白衣飘飘的年代。。。",
+                    wj1 : "wj1",
+                    wj2 : "wj2",
+                    subMessage : ['react', 'nodejs', 'ng2']
+                });
+            },
+
+            handleClick : function () {
+                this.setState({count:++this.state.count});
+            },
+
+            getDefaultProps : function () {
+                return {
+                    title : "Fuck IE",
+                    message : "FUCK IE"
+                }
+            },
+
+            render: function() {
+
+                return (
+                    <div>
+                        <h1> {this.props.title} </h1>
+                        <h2> {this.props.message} </h2>
+
+
+                        <p className="hg" onClick={this.handleClick}> 点击我 </p>
+                        <p className={this.state.count%2 == 0 ? this.state.wj1 : this.state.wj2 }> 点击了多少 {this.state.count} 次</p>
+                        <p> {this.state.text} </p>
+
+                        <TextPropsBox />
+                    </div>
+                );
+            }
+        });
+
+
+        var TextPropsBox = React.createClass({
+            getDefaultProps : function () {     //容错，父元素不传递，就显示这个默认的
+                return {
+                    message: ["如果父组件，没有传递这个属性，子组件的默认设定，容错性","ceshi"]
+                }
+            },
+
+            render : function () {
+                var msg = [];
+
+                // message 是父组件传入的参数的名称
+                for (var i = 0; i < this.props.message.length; i++) {
+                    msg.push(
+                            <p> {this.props.message[i]} </p>
+                        );
+                }
+
+                return (
+                    <div>
+                         {msg} 
+                    </div>
+                );
+            }
+        });
+
+        var title = "来自顶层的数据";
+
+        React.render(
+            <MessageBox title={title} />,
+            document.getElementById('app')
+        );
+    </script>
+    
+</body>
+</html>

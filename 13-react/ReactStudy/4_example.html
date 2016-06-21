@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>react one test</title>
+    <title>组件嵌套</title>
 </head>
 <body>
     <script src="build/react.js"></script>
@@ -10,65 +10,56 @@
 
     <div id="app"></div>
     <div id="app1"></div>
+    
+    <style>
+        
+        .hg {
+            width: 100px;
+            height: 100px;
+        }
 
 
+    </style>
+    
     <script type="text/jsx">
 
-        var LikeButton = React.createClass({
-            getInitialState: function() {
-                return {liked: false};
-            },
-            handleClick: function(event) {
-                this.setState({liked: !this.state.liked});
-            },
+        var Avatar = React.createClass({
             render: function() {
-                var text = this.state.liked ? 'like' : 'haven\'t liked';
-
                 return (
-                    <p onClick={this.handleClick}>
-                        You {text} this. Click to toggle.
-                    </p>
+                    <div>
+                        <ProfilePic username={this.props.username} />
+                        <ProfileLink username={this.props.username} />
+                    </div>
                 );
             }
         });
 
-        var likebut = React.render(
-            <LikeButton />,
-            document.getElementById('app')
-        );
-
-
-        var MessageBoxCount = React.createClass({
-            getInitialState : function () {
-                return {
-                    count : 0,
-                    testValue:"test",
-                }
+        var ProfilePic = React.createClass({
+            test : function () {
+                console.log(this);
+                console.log(this.props.children);
             },
-
-            handleClick : function () {
-                alert(this.state.count);
-                this.setState({count: ++this.state.count});
-            },
-
-            render : function () {
+            render: function() {
                 return (
-                    <div>
-                        <div onClick={this.handleClick}>
-                            点击我计数
-                        </div>
-                        <div> 点击了{this.state.count}次 </div>
-                        <div> {this.state.testValue} </div>
-                    </div>
-                )
+                    <img  onClick={this.test} className="hg" src={'https://ss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/' + this.props.username} />
+                );
             }
         });
 
-        var mgCount = React.render(
-            <MessageBoxCount />,
-            document.getElementById('app1')
-        );
+        var ProfileLink = React.createClass({
+            render: function() {
+                return (
+                    <a href={'https://ss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/' + this.props.username}>
+                        {this.props.username}
+                    </a>
+                );
+            }
+        });
 
+        var test = React.render(
+            <Avatar username="150.jpg" />,
+            document.getElementById('app')
+        );
 
     </script>
     

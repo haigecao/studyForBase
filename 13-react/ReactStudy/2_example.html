@@ -14,34 +14,11 @@
 
     <script type="text/jsx">
 
-        // 组件的复用
-
-        var MessageBox = React.createClass({
-            render : function () {
-                return (
-                    <div>
-                        <h1 onClick={this.alertMe} >hello world!</h1>
-                        <SubMessageBox />
-                    </div>
-                )
-            }
-        });
-
-        var SubMessageBox = React.createClass({
-            render : function () {
-                return (<h3>keep going on sth...</h3>)
-            }
-        });
-
-        React.render(<MessageBox />, 
-            document.getElementById('app'),
-            function () {
-                console.log('complete callback function');
-            }
-        );
-
 // --------------------------------------------------------------------
-
+// 组件复用
+// 赋值 a = {i}
+// 
+// --------------------------------------------------------------------
 
         var ArrayMessageBox = React.createClass({
             render : function () {
