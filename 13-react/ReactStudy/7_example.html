@@ -24,15 +24,32 @@
             getInitialState:function () {
                 return ({
                    text : "change react text",
-                   selectValue : "a"
+                   selectValue : "a",
+                   formData : [],
+                   radioBox : '',
+                   checkboxList : ['p'],
                 });
             },
 
-            handleClick : function (e) {
-                // this.setState({count:++this.state.count});
-                console.log("event object", e);
-                console.log("e.target", e.target);
-                console.log("本地的原生事件", e.nativeEvent);
+            handleRadioClick : function (e) {
+                // alert(e.target.value);
+                this.setState({radioBox:e.target.value});
+            },
+
+            checkboxhandle : function (e) {
+                var value = e.target.value;         //点击的值
+                var arr = this.state.checkboxList.slice();
+
+                if (-1 == (index = arr.indexOf(value))) {     // 遍历是否有值
+                    arr.push(value);
+                } else {
+                    arr.splice(index, 1);
+                }
+
+                this.setState({
+                    checkboxList: arr
+                });
+
 
             },
 
@@ -47,14 +64,33 @@
                 // alert();
                 e.preventDefault();
 
-                console.log(this.refs['text']);
+                // console.log(this.refs['text1']);
+                // console.log(this.refs['text1'].getDOMNode());
+                // console.log(this.refs['text1'].getDOMNode().value);
+
+
+                // console.log('react1', React.findDOMNode(this.refs['text1']));
+                // console.log(this.refs['text1'].getDOMNode().value);
+                // console.log('react2', React.findDOMNode(this.refs['text1'].getDOMNode()));
+
+                var formData = {
+                    text1 : this.refs['text1'].getDOMNode().value,
+                    text2 : this.refs['text2'].getDOMNode().value,
+                    select1 : this.refs['select1'].getDOMNode().value,
+                    radioBox : this.state.radioBox,
+                    checkbox : this.state.checkboxList,
+                    textarea : this.refs['textarea'].getDOMNode().value,
+                }; 
+
+                console.log(formData);
+
             },
 
             handleChange : function (e) {
                 this.setState({text : e.target.value});
             },
 
-            handleChangeSelect : function () {
+            handleChangeSelect : function (e) {
                 this.setState({selectValue: e.target.value});
             },
 
@@ -64,33 +100,44 @@
                     <div>
                          <form onSubmit={this.handleSubmit}> 
 
-                            <input ref='text' type='text' defaultValue="fuck ie" />
-                            <input type='text' value={this.state.text} onChange={this.handleChange} />
+                            <input ref={function (comp) {
+                                console.log(comp);
+                                comp.getDOMNode().focus();  // 初始化，刷新，焦点在这里，
+                                comp.getDOMNode().onfocus = function () {
+                                    console.log("焦点事件");
+                                }
 
-                            <br/>
-                            <select onChange={this.handleChangeSelect} value='b'>
+                            {/*
+                                focus :  是执行的方法。本身就是一个函数。
+                              
+                                onfocus ： 是一个事件。 ＝ funciton () {}, 事件触发，执行。
+
+                              
+                              */}
+
+                            }} defaultValue='hgonlywj' />
+                            <br />
+                            标题:
+                            <input ref='text1' type='text' defaultValue="fuck ie" />
+                            <br />
+
+                            <input ref='text2'  type='text' value={this.state.text} onChange={this.handleChange} />
+                            <br />
+
+                            <select ref='select1' ref='select1' onChange={this.handleChangeSelect} value='b'>
                                 <option value='a'>A</option>
                                 <option value='b'>B</option>
                                 <option value='c'>C</option>
                             </select>
+                            <br />
 
-                            <br/>
-                            <p>radio button</p>
-                            <lable for="hg1" >A</lable>
-                            <input id='hg1' type='radio'  name='inputRaido' value="a" /><br/>
-                            <lable for='hg2' >B</lable>
-                            <input id='hg2' type='radio' defaultChecked name='inputRaido' value="b" /><br/>
-                            <lable for='hg3' >C</lable>
-                            <input id='hg3' type='radio' name='inputRaido' value="c" />
-                            <hr />
-
-                            <input id='hg3' type='checkbox' name='inputCheckBox' value="m" />
-                            <input id='hg3' type='checkbox' name='inputCheckBox' value="n" />
-                            <input id='hg3' type='checkbox' defaultChecked name='inputCheckBox' value="p" />
+                            <p>radio button</p> 
+                            <RadioBox radioClick={this.handleRadioClick}/>
+                            <CheckboxList boxhandle={this.checkboxhandle} />
+                            <input type='textarea' ref='textarea' defaultValue="3324"/>
+                            <br />
 
                             <input type='submit' onClick={this.handleSubmit}/>
-
-
                          </form>
 
                     </div>
@@ -98,7 +145,35 @@
             }
         });
 
+        var RadioBox = React.createClass({
+            render : function () {
+                return (
+                    <div>
+                        <lable >A</lable>
+                        <input onClick={this.props.radioClick}  type='radio' name='inputRaido' value="a" /><br/>
+                        <lable >B</lable>
+                        <input onClick={this.props.radioClick}  type='radio' defaultChecked name='inputRaido' value="b" />
+                        <br/>
+                        <lable >C</lable>
+                        <input onClick={this.props.radioClick}  type='radio' name='inputRaido' value="c" />
+                        <hr />
 
+                    </div>
+                );
+            }
+        });
+    
+        var CheckboxList = React.createClass({
+            render : function () {
+                return (
+                    <span>
+                        <input type='checkbox' onClick={this.props.boxhandle} name='inputCheckBox' value="m" />
+                        <input type='checkbox' onClick={this.props.boxhandle} name='inputCheckBox' value="n" />
+                        <input type='checkbox' onClick={this.props.boxhandle} defaultChecked name='inputCheckBox' value="p" />
+                    </span>
+                );
+            }
+        });
 
 
         React.render(

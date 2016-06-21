@@ -52,7 +52,17 @@
     
         props的传递大致是从顶向下,从父组件传递数据到子组件里面。
         
-        1）手动传递
+            父组件通过，props向下传递数据。子组件通过props拿到父组件提供的数据。
+    
+            var title = "ie";
+            <MessageBox title={title} />;
+
+                组件通过
+                        this.props.title使用数据或者函数。
+                可以在 getDefaultProps : function () {
+                    title : 'alert',
+                } 
+        设定默认的数据，如果没有传入数据，就是用默认提供的，传入，使用传入的。
 
 
 
@@ -85,7 +95,26 @@
 
 ### refs
     
-        
+        在标签中设定 ref='something...'，通过this.refs获取所有的ref。
+    可以在拿到的时候，使用 this.refs['something...']获取到该react的对象，
+    这个时候，就可以使用value获取里面的值。或者属性。
+
+    this.refs['something...'] 是react 的 component
+
+    使用 this.refs['something...'].getDomNode(); 获取DOM对象。
+
+        1） this.refs['text1'].getDOMNode() 用这个对象去操作DOM的属性和内容，
+        2） React.findDOMNode(this.refs['text1']) 这个方法也可获取真实node。
+    
+        在使用radiobutton 和 checkbox的时候，定义很多个refs有些不值得，因此还是
+    增加点击事件的方式，获取值比较方便。
+
+    ref也可以是一个函数。
+        ref={function (comp) {  // comp是一个组件的react对象
+
+
+        }}
+
 
 
 
@@ -96,7 +125,7 @@
 
         从属关系，父子关系简单说就是DOM标签的关系。
 
-        子级：    
+        子级：
     
 
 
