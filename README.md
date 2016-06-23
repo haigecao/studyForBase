@@ -32,11 +32,12 @@
 
 
     9-HTTP
-        基于TCP封装了HTTP
+        基于TCP封装了HTTP,实现了简单的HTTP服务器。
+    容错性比较低，但是还是可以模拟HTTP头。
 
 
     10-前端基础
-        CSS
+        CSS3
         JS
 
     11-canvas
@@ -53,6 +54,12 @@
 
     14-PS
         切图
+
+
+    15-webpack
+    
+
+    16-ES6
 
 
 

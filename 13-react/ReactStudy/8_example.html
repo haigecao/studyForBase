@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mixin</title>
+</head>
+<body>
+    <script src="build/react.js"></script>
+    <script src="build/react-with-addons.js"></script>
+    <script src='build/JSXTransformer.js'></script>
+
+    <div id="app"></div>
+    <div id="app1"></div>
+    
+    <style>
+        p { font-size: 20px; }
+        .hg { cursor: pointer; }
+        .wj1 { color: red; }
+        .wj2 { color: blue; }
+    </style>
+
+    <script type="text/jsx">
+
+        var TextMixin = React.createClass({
+            mixins: [React.addons.LinkedStateMixin],
+
+            getInitialState : function () {
+                return  ({
+                    text1:'today is another day ...',
+                    text2:'loser man...',
+                    isCheck: true,
+                });
+            },
+
+            test : function () {
+                alert();
+            },
+
+            render : function () {
+                return (
+                    <div>
+                        <p> {this.state.text1} </p>
+                        <p> {this.state.text2} </p>
+                        <br />
+                        <input type="text" valueLink={this.linkState('text1')} />
+                        <br />
+                        <span>
+                            checkbox检测双向数据流 
+                                { this.state.isCheck? '你好，我不好。。。' : '我好，你也不好，哈哈。。。why，你我，你不是我。笨。。。'} 
+                        </span>
+                        <br />
+                        <input type='checkbox' checkedLink={ this.linkState('isCheck') } onClick={this.test} />
+
+                        <MessageBox text1={ this.linkState('text1') } text2={ this.linkState('isCheck') } />
+                  
+                    
+                    </div>
+                );
+            },
+        });
+
+        var MessageBox = React.createClass({
+            render : function () {
+                return (
+                    <div>
+                        <h2>MessageBox 组件</h2>
+                        <input type="text" valueLink={ this.props.text1 } /> <br />
+                        <p> 你想选择什么呢？  </p>
+
+                        <input type='checkbox' checkedLink={ this.props.text2 } /> <br />
+
+                        {/*
+                            <SubMessageBox text1={ this.props.text1 } text2={ this.props.text2 } />
+                        */}
+
+                        <SubMessageBox {...this.props} />
+
+                    </div>
+                );
+            }
+        });
+
+        var SubMessageBox = React.createClass({
+            render : function () {
+                return (
+                    <div>
+                        <h2> message box 子组件 </h2>
+                        <input type="text" valueLink={ this.props.text1 } />
+                        <p> 你想选择什么呢？</p>
+                        <input type='checkbox' checkedLink={ this.props.text2 } />
+                    </div>
+                );
+            }
+        });
+
+        var test =  React.render(
+            <TextMixin />,
+            document.getElementById("app1")
+        );
+
+
+
+
+    </script>
+    
+</body>
+</html>

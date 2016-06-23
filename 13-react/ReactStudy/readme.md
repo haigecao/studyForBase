@@ -111,9 +111,138 @@
 
     ref也可以是一个函数。
         ref={function (comp) {  // comp是一个组件的react对象
-
-
         }}
+
+
+
+
+### 双向数据流
+    
+    需要使用 mixin 有插件。通过onchange实现的。也可以实现自己的插件。
+        
+        1） 首先引入插件 <script src="build/react-with-addons.js"></script>
+
+        2） 在组件中添加需要引入的插件， mixins: [React.addons.LinkedStateMixin],
+
+        3） 使用 <input type="text" valueLink={this.linkState('text1')} />;
+
+
+    linkstate 可以向下传递到子组件。
+
+        如果很多，会传很多参数，ES6，有 ... 可以扩展。
+        <MessageBox text1={ this.linkState('text1') } text2={ this.linkState('isCheck') } />
+
+        {/*
+            <SubMessageBox text1={ this.props.text1 } text2={ this.props.text2 } />
+        */}
+
+        <SubMessageBox {...this.props} /> 上下是等价的
+
+    mixin 是一个 setState 和 onchange 事件。
+
+        var WithoutMixin = React.createClass({
+          getInitialState: function() {
+            return {message: 'Hello!'};
+          },
+          handleChange: function(newValue) {
+            this.setState({message: newValue});
+          },
+          render: function() {
+            var valueLink = {
+              value: this.state.message,
+              requestChange: this.handleChange
+            };
+            return <input type="text" valueLink={valueLink} />;
+          }
+        });
+
+        ReactLink对象是非常简单的，仅仅有一个value和requestChange属性。
+        
+        valueLink : input textarea text
+        checkLink : checkbox
+        
+        LinkedStateMixin 给你的 React 组件添加一个叫做linkState()的方法。
+        linkState()返回一个ReactLink对象，包含React state当前的值和一个用来改变它的回调函数。
+        
+
+        ReactLink 仅仅是一个 onChange/setState()
+        模式的简单包装和约定。它不会从根本上改变数据在你的React应用中如何流动。
+        是一种语法糖
+        
+
+
+### 组件的生命周期    
+
+        执行顺序
+    
+            1） getDefaultProps
+            2） getInitialState
+            3） componentWillMount      
+                // 在这里设定setState({text1:'finding' })，不会造成二次渲染。
+            4）  render
+            5） componentDidMount       
+                // 可以获取DOM this.getDOMNode();  ajax ,等操作，是比较合适的。
+
+
+            6） componentWillUnmount    
+                // 组建卸载的时候如果在组件上面绑定了定时器这种不停的循环事件，
+                在组件删除的时候，需要清理定时器，取消事件监听函数，可以理解为析构函数。
+
+            
+            7） shouldComponentUpdate   
+                // 是否要更新
+                    在接收到新的 props 或者 state，将要渲染之前调用。
+                该方法在初始化渲染的时候不会调用，在使用 forceUpdate 方法的时候也不会。
+                如果确定新的 props 和 state 不会导致组件更新，则此处应该 返回 false。
+
+                    如果 shouldComponentUpdate 返回 false，则 render() 将不会执行，
+                直到下一次 state 改变。（另外，componentWillUpdate 和 componentDidUpdate 也不会被调用。）
+
+                    
+                    如果性能是个瓶颈，尤其是有几十个甚至上百个组件的时候，
+                使用 shouldComponentUpdate 可以提升应用的性能。
+
+            8） componentWillUpdate
+                    在接收到新的 props 或者 state 之前立刻调用。
+                在初始化渲染的时候该方法不会被调用。使用该方法做一些更新之前的准备工作。
+
+
+            9） componentDidUpdate(object prevProps, object prevState)
+                    在组件的更新已经同步到 DOM 中之后立刻被调用。该方法不会在初始化渲染的时候调用。
+                使用该方法可以在组件更新之后操作 DOM 元素。
+
+
+            10) componentWillReceiveProps
+
+                        componentWillReceiveProps(object nextProps)
+                    在组件接收到新的 props 的时候调用。在初始化渲染的时候，该方法不会调用。
+
+                        用此函数可以作为 react 在 prop 传入之后， render() 渲染之前更新 state 的机会。
+                    老的 props 可以通过 this.props 获取到。在该函数中调用 this.setState() 将不会引起第二次渲染。
+
+
+        
+
+        更新：
+    
+            shouldComponentUpdate --> componentWillUpdate --> render --> componentDidUpdate
+
+
+
+
+
+
+
+
+
+
+
+
+
+### mixin 
+    
+    
+
 
 
 
@@ -127,14 +256,6 @@
 
         子级：
     
-
-
-
-
-
-
-
-
 
 
 
