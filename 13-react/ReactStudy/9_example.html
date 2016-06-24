@@ -136,7 +136,7 @@
                         <button onClick={this.addCount}   > 累加 </button>  
                         <button onClick={this.killDel}  > delete </button>  
 
-                        <p>计数： {this.state.count} </p>
+                        <p>点击累加按钮，最大到10： {this.state.count} </p>
 
                         < SubMessageBox  count={this.state.count}/>
 
@@ -205,7 +205,7 @@
 
                 // console.log(nextState, nextProps);
 
-                if (this.state.count > 3) {
+                if (this.state.count > 10) {
                     console.log('返回 false，无法累加。');
                     return false;
                 }
@@ -331,6 +331,8 @@
 
             componentWillReceiveProps : function (nextProps) {
                 console.log('nextProps', nextProps);
+
+
             },
         
         //---------------------------------------------------------------------------------
@@ -357,8 +359,14 @@
                 console.log("sub componentDidMount");
             },
 
-            shouldComponentUpdate : function() {
+            shouldComponentUpdate : function(prevProps, prevState) {
                 console.log("sub shouldComponentUpdate");
+                
+                if (prevProps.count > 5) {
+                    return false;
+                }
+
+
                 return true;
             },
 
@@ -382,7 +390,7 @@
                     <div>
                         <hr/>
                         <p> 子组件的内容 </p>
-                        <p> 相同的基数 —— {this.props.count} </p>
+                        <p> 点击累加按钮，最大到5 —— {this.props.count} </p>
 
                     </div>
                 )

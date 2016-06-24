@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> mixin 的编写 </title>
+</head>
+<body>
+    <script src="build/react.js"></script>
+    <script src="build/react-with-addons.js"></script>
+    <script src='build/JSXTransformer.js'></script>
+
+    <div id="app"></div>
+    <div id="app1"></div>
+    
+    <style>
+        p { font-size: 20px; }
+    </style>
+
+    <script type="text/jsx">
+
+        var stateTextMixin = {
+            componentWillMount : function () {
+                console.log(' mixin stateTextMixin ');
+                this.oldState = [];
+            },
+            componentWillUpdate : function (nextProps, nextState) {
+                console.log(' mixin componentWillUpdate ');
+                this.oldState.push(nextState);
+            },
+            prevState : function () {
+                var index = this.oldState.length - 1;
+                return index == -1 ? {} : this.oldState[index];
+            },
+        };
+
+        var TextMixin = React.createClass({
+            mixins: [stateTextMixin],
+
+            componentWillMount : function () {
+                console.log('组件 componentWillMount');
+            },
+
+            componentWillUpdate : function (nextProps, nextState) {
+                console.log(' 组件 componentWillUpdate ');
+            },
+            
+            getInitialState : function () {
+                return  ({ 
+                    count : 1,
+                });
+            },
+
+            addCount : function () {
+                this.setState({
+                    count: 2 * this.state.count,
+                });
+
+                alert(this.prevState().count);
+            },
+
+            render : function () {
+                return (
+                    <div>
+                        <div> 当前计数是: {this.state.count} </div>
+
+                        <input type='button' value='更新' onClick={this.addCount} />
+                    
+                        <MessageBox count={this.state.count}/>
+                        
+                    </div>
+                );
+            },
+        });
+
+        var MessageBox = React.createClass({
+            render : function () {
+                return (
+                    <div>
+                        <p>当前的count: {this.props.count} </p>
+                    </div>
+                );
+            }
+        });
+
+        var test =  React.render(
+            <TextMixin />,
+            document.getElementById("app1")
+        );
+
+
+
+
+    </script>
+    
+</body>
+</html>

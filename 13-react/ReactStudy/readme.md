@@ -228,8 +228,15 @@
             shouldComponentUpdate --> componentWillUpdate --> render --> componentDidUpdate
 
 
+        
 
-
+        这回，差不多把组件的生命周期理解。
+            父节点
+                --》
+                    子节点
+                        --》
+                            父节点闭合
+        有点像类的构造和析构。
 
 
 
@@ -241,6 +248,7 @@
 
 ### mixin 
     
+        mixin 就是让公用的组件使用相似的逻辑。就不用每次都写一些相似的代码了。
     
 
 

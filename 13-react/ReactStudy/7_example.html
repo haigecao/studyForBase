@@ -117,8 +117,8 @@
 
                             }} defaultValue='hgonlywj' />
                             <br />
-                            标题:
-                            <input ref='text1' type='text' defaultValue="fuck ie" />
+                            <lable htmlFor='test'> 标题:</lable>
+                            <input id='test' ref='text1' type='text' defaultValue="fuck ie" />
                             <br />
 
                             <input ref='text2'  type='text' value={this.state.text} onChange={this.handleChange} />
@@ -151,8 +151,8 @@
                     <div>
                         <lable >A</lable>
                         <input onClick={this.props.radioClick}  type='radio' name='inputRaido' value="a" /><br/>
-                        <lable >B</lable>
-                        <input onClick={this.props.radioClick}  type='radio' defaultChecked name='inputRaido' value="b" />
+                        <lable htmlFor='B' >B</lable>
+                        <input id='B' onClick={this.props.radioClick}  type='radio' defaultChecked name='inputRaido' value="b" />
                         <br/>
                         <lable >C</lable>
                         <input onClick={this.props.radioClick}  type='radio' name='inputRaido' value="c" />
