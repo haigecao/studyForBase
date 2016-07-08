@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+</head>
+<body>
+    
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+
+        'use strict';
+
+        var divs = document.getElementsByTagName('div');
+
+        // 传统的数组赋值
+        var els = [].slice.call(divs);
+        console.log(els);
+
+        // 扩展的方法
+        var els1 = Array.from(divs);    // 把类数组给转换一下
+        console.log(els1);
+
+
+        // 在 ES6 中，字符串也是类数组
+        var test1 = 'test1';
+        var test1Arr = Array.from(test1);
+        console.log(test1Arr);
+
+
+
+        // of 将传入的一组数据，转换成为一个数组
+        var test2 = Array.of(1,2,3,4,5);
+        console.log(test2);
+        console.log(Array.isArray(test2));      // true
+                                            
+
+        // find 
+        // 返回查找到的第一个
+        var test3 = [1,2,3,4,5];
+        var val3 = test3.find(function () {
+            console.log(arguments);
+            // arguments 值， 索引， 数组本身
+            if (arguments[0] > 3) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+        console.log("val3: ",val3);  // 4
+
+
+
+        // findIndex 跟index差不多
+        
+        var index4 = test3.findIndex(function (value, index, array) {
+            return value >= 4;
+        });
+
+        console.log("index4: ", index4, ' ,value: ', test3[index4]);
+
+
+        // fill 填充
+        
+        var test4 = [1,2,3,4,5,6,7,8];
+        test4.fill("a", 1, 4);  // [1, 4), 先避后开的区间
+        console.log(test4);
+
+
+
+
+        var test5 = ['a', 'b', 'c', 'd', 'e'];
+
+        // for in
+
+
+
+        // for of
+        // 循环遍历数组中的值
+        for (let val of test5) {
+            console.log("val:", val);
+        }
+
+
+
+        // arr.keys
+        // arr.values
+        // arr.entries
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

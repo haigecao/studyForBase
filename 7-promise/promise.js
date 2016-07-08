@@ -16,10 +16,10 @@
 
     function reject () {
 
-    } 
+    }
 
     new Promise(resolve, reject) {
-        
+
         // 逻辑
     }
     .then(f1, f2)
@@ -34,23 +34,23 @@
 
     promise.then(
         fun1() {
-            
+
             // 成功之后
-        
+
         }, fun2() {
             // 失败
 
     })
 
- 
- 
- 
- 
+
+
+
+
  */
 
 
 
-//  Promise对象接收一个函数  
+//  Promise对象接收一个函数
 //  该函数有两个参数，
 //  这两个参数是函数
 function Promise(resolver) {
@@ -67,7 +67,7 @@ function Promise(resolver) {
         setTimeout(function() {
             if (arr = queue.shift()) {
                 chainRs = arr[state](val);
-                if (!chainRs) 
+                if (!chainRs)
                     return;
                 //某一个resolve函数返回的又是一个Promise对象
                 if (chainRs && typeof chainRs.then == 'function') {
@@ -120,6 +120,8 @@ function Promise(resolver) {
 
 debugger
 
+
+
 // 例子——1
 var test = new Promise(function (resolve, reject) {
     setTimeout(function () {
@@ -171,34 +173,12 @@ var test = new Promise(function (resolve, reject) {
 
 //   }).then(function(data) {
 //     console.log('2nd then', data);  //wahaha
-    
+
 //     // resolve
 //     // reject
-    
+
 //     // return 666;
 //   })
 //   .then(function(data) {
 //     console.log('3rd then', data);
 //   });
-
-
- 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

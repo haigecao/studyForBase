@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量</title>
+</head>
+<body>
+
+    <script>
+
+        'use strict';
+
+        // console.log(a); // undefined
+
+        var a = 1;
+
+        // console.log(b); // error
+
+        let b = 2;
+
+
+        {/*
+          
+            死区，无法使用。
+          
+            */
+            let c = 3
+        }
+
+        // console.log(c);     // error c is not defined
+    
+        for (var i = 0; i < 10; i++) {
+            setTimeout(function () {
+                console.log(i);     
+            });
+        }        // 打印 10 个 10
+        
+
+        for (let j = 0; j < 10; j++) {
+            setTimeout( function () {
+                console.log(j)
+            })
+        }
+
+                            
+
+
+    </script>
+    
+</body>
+</html>

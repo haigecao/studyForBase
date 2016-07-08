@@ -1,0 +1,29 @@
+div
+{
+ width: 100px;
+ height: 100px;
+}
+.a
+{
+ transform: rotate(7deg);
+
+ background-color: red;
+}
+.b
+{
+ margin-top: -50px;
+ margin-left: 50px;
+
+ background-color: blue;
+}
+.c
+{
+ margin-top: -100px;
+ margin-left: 80px;
+
+ background-color: green;
+}
+.d
+{
+ position: relative;
+}

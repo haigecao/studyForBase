@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object 方法</title>
+</head>
+<body>
+
+    <script>
+
+    'use strict';
+
+    // Object.is() 判断2个参数，是否相同∏
+
+    console.log("NaN, NaN ",Object.is(NaN, NaN));   // true
+    console.log("0 0 ", Object.is(0 , 0));          // true
+    console.log("0 -0 ", Object.is(0 , -0));        // false
+
+
+
+
+    // Object.assign 合并属性到对象
+    // 可以合并多组对象，但是如果属性名称相同，后面的覆盖前面的
+    // 纯覆盖，并没有优先级，比如函数 》 变量。没有
+    
+    var a = {
+        name : '1'
+    };
+    var b = {
+        name : '2',
+        test : function () {
+            console.log(0);
+        }
+    };
+    var c = {
+        a : '1',
+        b : '2',
+        test : 3
+    };
+        
+    var testVal = {};
+    Object.assign(testVal, a, b, c);
+    console.log(testVal);
+
+
+
+    // Object.getPrototypeOf();     获取prototype的属性
+    // 
+    // Object.setPrototypeOf();
+    // 
+    
+    var obj1 = {
+        a : 1,
+        b : 2
+    };
+    // 代理
+    // var p1 = new Proxy(obj1, {
+    //     get(obj, attr) {
+    //         console.log(obj, attr);
+    //         return obj.a;
+    //     }, 
+    //     set(obj, attr, value) {
+    //         console.log(arguments);
+    //         obj[attr] = value;
+
+    //         return obj[attr];
+    //     }
+    // });
+
+
+
+
+
+    // 访问p1.a, 会触发get方法。
+    // 可以在get中设定权限，可以访问什么，不可以访问什么。
+
+
+    // 监控对象
+    // Object.observe();
+    // Object.observe(obj1, observe, [eventType]);
+    // 参数： 需要监控的对象， 回调函数， 事件
+    // 事件类型：add,update, delete, 
+    // setPrototype 设定原型
+    // reconfigure: 属性 attributes 发生变化
+    // 
+    // Object.unobserve 取消
+
+    // Object.observe(obj1, function () {
+    //     console.log('object is change');
+    // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    
+</body>
+</html>

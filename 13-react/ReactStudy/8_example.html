@@ -11,7 +11,10 @@
 
     <div id="app"></div>
     <div id="app1"></div>
-    
+
+    <div class="di"></div>
+
+
     <style>
         p { font-size: 20px; }
         .hg { cursor: pointer; }
@@ -45,15 +48,15 @@
                         <input type="text" valueLink={this.linkState('text1')} />
                         <br />
                         <span>
-                            checkbox检测双向数据流 
-                                { this.state.isCheck? '你好，我不好。。。' : '我好，你也不好，哈哈。。。why，你我，你不是我。笨。。。'} 
+                            checkbox检测双向数据流
+                                { this.state.isCheck? '你好，我不好。。。' : '我好，你也不好，哈哈。。。why，你我，你不是我。笨。。。'}
                         </span>
                         <br />
                         <input type='checkbox' checkedLink={ this.linkState('isCheck') } onClick={this.test} />
 
                         <MessageBox text1={ this.linkState('text1') } text2={ this.linkState('isCheck') } />
-                  
-                    
+
+
                     </div>
                 );
             },
@@ -102,6 +105,6 @@
 
 
     </script>
-    
+
 </body>
 </html>

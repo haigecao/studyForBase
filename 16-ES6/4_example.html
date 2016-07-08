@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串扩展</title>
+</head>
+<body>
+
+    <script>
+
+        'use strict';
+
+        var sx = '12345';
+        console.log(sx.length);
+
+        var xs = '吉祥如意';
+        console.log(xs.length);
+
+        console.log(xs.codePointAt(0));
+        console.log(String.fromCodePoint(21513));
+
+        // xs.at();     // 返回对应位置的字符
+        // xs.repeat(10)        // 复制10次
+         
+        // 模板字符串
+        // 使用反引号，在中间使用 ${} 来包围着变量。
+        var  str = `你好2016 ${sx} 你好 2017 ${xs}`;
+        console.log(str);
+
+        // 查找方法
+        
+        // 要查找的字符串
+        // 起始位置
+        console.log(str.includes('你好'));    // includes 检测，
+                                            // 和indexOf 很像
+    
+        console.log(str.startsWith('2016'));   // 进行查找，看是否在头部
+
+        console.log(str.endsWith('2017'));      // 表示是否在是否在尾部
+        
+
+
+        var aa = 0b11;  // 2 进制
+
+        var bb = 0o22;  // 8 进制
+
+
+        console.log(aa, bb);
+
+
+
+
+        var cc = 1.234;
+        console.log(Math.trunc(cc));    // 干掉小数点
+
+        // sign 可以判断 0， -0；这个蛮好玩
+        console.log(Math.sign(-10));
+        console.log(Math.sign(10));
+        console.log(Math.sign(-0));
+        console.log(Math.sign(+0));
+        console.log(Math.sign(0));
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

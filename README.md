@@ -14,21 +14,23 @@
 
 
     4-压缩打包
-        推荐使用fis
+        推荐使用fis,gulp
         或者nodejs+express/koa
 
 
     5-C++基础
 
 
+
     6-Memcached
-        缓存
+        缓存(还没看)
 
 
     7-promise
     
 
     8-mysql
+        
 
 
     9-HTTP
@@ -53,13 +55,19 @@
 
 
     14-PS
-        切图
+        切图(还没复习)
 
 
-    15-webpack
-    
+    15-gulp
+        
 
     16-ES6
+
+
+    17-nodejs
+
+
+
 
 
 

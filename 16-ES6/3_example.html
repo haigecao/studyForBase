@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量解析赋值</title>
+</head>
+<body>
+    <script>
+
+        'use strict';
+
+        // 解构
+        var [a, b, c]=[1, 2, 3];  // a 1, b 2,c 3.
+                                    // 
+        
+        // 支持多层牵头啊，但是要格式正确。
+        
+        var obj = {
+            test : function () {
+                console.log('test');
+            },
+            a : 1,
+            b : [1,2,3],
+            c : {}
+        }
+
+        var {test, a, b, c} = obj;      // 这也是可以复制成功的，名字对应就好了。
+        
+        // 解构复制，就是在赋值对象的时候，比较方便。拿出想要的。
+
+    
+        var x = 1;
+        var y = 2;
+
+        var [x, y] = [y, x];    // x, y 值进行了互换
+
+        
+
+
+
+    </script>
+    
+</body>
+</html>

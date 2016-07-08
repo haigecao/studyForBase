@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的扩展</title>
+</head>
+<body>
+
+    <script>
+
+        'use strict';
+
+        // 对象的间接表达
+        function fn (x, y) {
+
+            x++;
+            y++;
+
+            return {x, y};
+        }
+
+        console.log(fn(1, 2));  // Object {x: 2, y: 3}
+
+
+        // ES6 允许对象做字面量的时候，使用表达式做为属性名
+        //         
+        var sex = '男';
+        var person = {
+            name : 'hg',
+            [sex] : false,
+            ['a' + 'ge'] : 100,
+            ['get' + 'Name'] : function () {
+                alert(this.name);
+            },
+            ['te' + 'st'] () {
+                alert('test');
+            },
+            say : 'you'
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    
+</body>
+</html>
