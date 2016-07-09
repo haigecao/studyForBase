@@ -262,6 +262,111 @@ s
 
 
 
+###
+
+        interface Sport {
+            public abstract void run();
+            public abstract void jump();
+            double PI = 3.14;
+        }
+
+        public class Test implements Sport {
+            void run () {
+                System.out.println("run");
+            }
+
+            void jump () {
+                System.out.println("jump");
+            }
+
+            public static void main(String[] args) {
+                Test t = new Test();
+                t.run();
+                t.jump();
+            }
+        }
+
+        在接口中，所有的方法，默认为是 puclic abstract 类型的。
+    因此，在 implements 出来的类，需要接口设定的权限，需要大于这个。
+    否则无法被访问。就定义成 public 。
+
+        接口中声明方法，不能使用那些修饰符。也即是说，不适用修饰符就好了。
+        public 接口，也需要定义在同名的文件中。
+
+        在实现接口的时候，需要讲接口的方法，都实现了，否则就是抽象类，
+    否则就无法实例化了。
+
+        接口是用来通信的，系统开发，定义规格。
+
+        并且接口可以继承多个 implements 接口；
+
+        接口中的数据成员，都是 公用静态常量。
+                            public static final
+            如何访问这种数据成员呢？
+
+        举例：
+            Sport.PI;
+            Test.PI;    // Test 继承自 Sport，所以访问静态成员。
+
+
+        类只能单继承，但是，一个类可以实现多个接口。
+    一个类在继承的时候，还可以实现多个接口。
+
+        //在继承类的同时，实现多个接口
+            interface Sittable {
+                void sit();
+            }
+            interface Lie {
+                void sleep();
+            }
+            interface HealthCare {
+                void massage();
+            }
+
+            // 实现了 Sittable 接口
+            class Chair implements Sittable
+            {
+                public void sit(){};
+            }
+
+            // 继承了Chair 类，并实现了两个接口
+            class Sofa extends Chair implements Lie, HealthCare
+            {
+                public void sleep(){};
+                public void massage(){};
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
