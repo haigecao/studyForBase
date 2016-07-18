@@ -34,10 +34,16 @@
     (9) TrailingSpaces
             空格提示  看到空格会有提示。很酷的插件，处女座情节严重者必用。
 
-    （10） GitGutter  
+    （10） GitGutter
 
     (11) HTMLBeautify —— that formats (indents) HTML source code. It makes code easier for humans to read.
             Command-Option-Shift-F
+
+
+    (12)分页现实
+
+        super alt ctrl + 1/2/3
+            分成1 页，2 页， 3页。
 
 
 
